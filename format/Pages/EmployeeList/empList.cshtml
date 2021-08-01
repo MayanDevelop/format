@@ -1,0 +1,81 @@
+﻿@page
+@model format.Pages.EmployeeList.empListModel
+@{
+    ViewData["Title"] = "EmpList";
+}
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-10">
+        <h2 class="text-info">Employee List</h2>
+    </div>
+    <div class="col-2">
+        <a class="btn btn-info form-control text-white" asp-page="Create">Create Employee</a>
+    </div>
+
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            @if (Model.Employees.Count() > 0)
+            {
+                <table id="EmpTable" class="table table-striped table-bordered" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Unique Id</th>
+                            <th style="width:10%;">Image</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile No.</th>
+                            <th>Designation</th>
+                            <th>Gender</th>
+                            <th>Course</th>
+                            <th>Created Date</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model.Employees)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => item.f_Id)
+                            </td>
+                            <td>
+                                <img src="@item.f_Image" style="width:100%;"/>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.f_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.f_Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.f_Mobile)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.f_Designation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.f_Gender)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.f_Course)
+                            </td>
+                            <td>
+                                @{string Date = item.f_Createdate.ToString("dd-MMM-yy"); } 
+                                @Html.DisplayFor(m=> Date)
+                            </td>
+                            <td>
+                                <a asp-page="Delete" asp-route-id="@item.f_Id" class="btn btn-danger btn-sm">Delete</a>
+                                <a asp-page="Edit" asp-route-id="@item.f_Id" class="btn btn-success btn-sm">Edit</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            }
+            else
+            {
+                <p>No Employee Found</p>
+            }
+        </form>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿@page
+@model format.Pages.EmployeeList.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+<h2 class="text-info">Edit Employees</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Employee.f_Createdate" value="@DateTime.Now" />
+        <input type="hidden" asp-for="Employee.f_Id" />
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Employee.f_Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Employee.f_Name" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Employee.f_Email"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Employee.f_Email" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Employee.f_Mobile"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Employee.f_Mobile" class="form-control" readonly/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Employee.f_Designation"></label>
+            </div>
+            <div class="col-6">
+                <select asp-for="Employee.f_Designation" class="form-control" disabled>
+                    <option value="HR">HR</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Sales">Sales</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Employee.f_Gender"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Employee.f_Gender" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Employee.f_Course"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Employee.f_Course" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Employee.f_Image"></label>
+            </div>
+            <div class="col-6">
+                <img src="@Model.Employee.f_Image" style="width:50%;" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <input type="submit" value="Delete" class="btn btn-danger form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="empList" class="btn btn-info form-control">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
